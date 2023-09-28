@@ -2047,6 +2047,8 @@ module Writexlsx
       value ||= ''
       value = value.to_i if value == value.to_i
       @writer.data_element('v', value)
+    rescue FloatDomainError
+      @writer.data_element('v', 'Infinity')
     end
 
     #
